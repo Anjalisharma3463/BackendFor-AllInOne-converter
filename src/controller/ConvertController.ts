@@ -2,7 +2,7 @@ import { Request, Response} from 'express';
 import ConverterFactory from '../services/ConverterFactory';
 
 
-const ConverterController = async (req: Request, res: Response) => {
+const ConvertController = async (req: Request, res: Response) => {
   const file = req.file;
   const { targetFormat } = req.body;
 
@@ -27,4 +27,4 @@ const ConverterController = async (req: Request, res: Response) => {
   }
 }
 
-export default ConverterController;
+export default ConvertController;
