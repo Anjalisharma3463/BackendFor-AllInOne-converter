@@ -12,16 +12,10 @@ const ConvertController = async (req: Request, res: Response) => {
   }
 
   try {
-  const converter = ConverterFactory.createConverter(file.mimetype);
-
-  if (!converter) {
-    res.status(400).json({ error: 'Unsupported file type for conversion' });
-    return;
-  }
-
-  const converted = await converter.convert(file.buffer, targetFormat);
+const converter = ConverterFactory.createConverter(targetFormat);
+  const convertedBuffer = await converter.convert(file.buffer);
   res.setHeader('Content-Type', `image/${targetFormat}`);
-  res.send(converted);
+  res.send(convertedBuffer);
   } catch (err: any) {
     res.status(500).send(err.message);
   }
