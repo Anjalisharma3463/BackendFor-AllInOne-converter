@@ -21,7 +21,7 @@
  import SharpSingleton from './SharpSingleton';
 import { IFormatStrategy } from './InterfaceStrategy';
 
-class converter {
+class ContextConverter {
   private strategy: IFormatStrategy;
 
   constructor(strategy: IFormatStrategy) {
@@ -42,4 +42,4 @@ class converter {
     return this.strategy.convert(sharpInstance);
   }
 }
-export default converter;
+export default ContextConverter;

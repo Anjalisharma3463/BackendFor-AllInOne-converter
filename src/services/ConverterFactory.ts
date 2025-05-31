@@ -1,11 +1,13 @@
-import converter from "./ContextConverter";
+import ContextConverter from "./ContextConverter";
 import { IFormatStrategy } from "./InterfaceStrategy";
 import { JpegStrategy } from "../ConcreteStrategies/JpegStrategy";
 import { PngStrategy } from "../ConcreteStrategies/PngStrategy";
 import { WebpStrategy } from "../ConcreteStrategies/WebpStrategy";
 
+
+//Now when we have to add new concretestrategy , we will add here not in main logic file where it is being executed.
 class ConverterFactory {
-  public static createConverter(targetFormat: string): converter {
+  public static createConverter(targetFormat: string): ContextConverter {
    const strategies: { [key: string]: IFormatStrategy } = {
   jpeg: new JpegStrategy(),
   jpg: new JpegStrategy(),
@@ -16,7 +18,7 @@ class ConverterFactory {
 const strategy = strategies[targetFormat.toLowerCase()];
 if (!strategy) throw new Error("Unsupported format");
 
-return new converter(strategy);
+return new ContextConverter(strategy);
 
   }
 }
